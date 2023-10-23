@@ -17,6 +17,7 @@ export default () => {
   app.use(express.urlencoded({ extended: false }));
   app.use(fileupload());
   app.use(morgan('dev'));
+  app.use('/media', express.static('media'));
   
   app.use('/api', apiRouter);
   

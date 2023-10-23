@@ -22,8 +22,8 @@ MERCADOPAGO_API_KEY = mp-access-token
 MONGO_URL = db-url
 JWT_SEC = secret-key-jwt
 PASS_SEC = secret-key-pass
-SECURE_URL = https://domain.com
-TEAM_URL = https://dev-team-url.com
+SECURE_URL = https://api.domain.com
+CLIENT_URL = https://domain.com
 ```
 
 <br>
