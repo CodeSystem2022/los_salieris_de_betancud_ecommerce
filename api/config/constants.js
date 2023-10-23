@@ -9,6 +9,6 @@ export const SECURE_DOMAIN = process.env.SECURE_DOMAIN
 export const MONGO_URL = process.env.MONGO_URL;
 export const MERCADOPAGO_API_KEY = process.env.MERCADOPAGO_API_KEY;
 export const WEBHOOK_NOTIFICATION_URL = `${process.env.SECURE_URL}/api/payment/webhook`;
-export const SUCCESS_PAID_URL = `${process.env.SECURE_URL}/api/payment/success`;
+export const SUCCESS_PAID_URL = process.env.CLIENT_URL ?? 'http://localhost:5173';
 export const FAILURE_PAID_URL = `${process.env.SECURE_URL}/api/payment/failure`;
 export const TEAM_URL = process.env.TEAM_URL || 'https://github.com/orgs/CodeSystem2022/teams/los-salieris-de-betancudLosSalierisDeBetancud'
