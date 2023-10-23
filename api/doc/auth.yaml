@@ -1,0 +1,113 @@
+tags:
+  - name: Auth
+    description: Everything about user authentication
+paths:
+  /api/auth/register:
+    post:
+      tags:
+        - Auth
+      summary: SignUp user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignUp'
+      responses:
+        201:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Successfull registration
+        400:
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+  /api/auth/login:
+    post:
+      tags:
+        - Auth
+      summary: SignIn user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignIn'
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    example: 5679edgb24589973e2e7s6d2
+                  username:
+                    type: string
+                    example: some_username
+                  email:
+                    type: string
+                    example: some_email
+                  isAdmin:
+                    type: boolean
+                    example: false
+                  createdAt:
+                    type: datetime
+                    example: 2023-10-14T01:21:31.537Z
+                  updatedAt:
+                    type: datetime
+                    example: 2023-10-14T01:21:31.537Z
+                  accessToken:
+                    type: string
+                    example: token
+                      
+        400:
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+
+components:
+  schemas:
+    SignUp:
+      required:
+        - username
+        - email
+        - password
+        - second_password
+      type: object
+      properties:
+        username:
+          type: string
+          example: some_username
+        email:
+          type: string
+          example: some@email.com
+        password:
+          type: string
+          example: some_password
+        second_password:
+          type: string
+          example: some_password
+    SignIn:
+      required:
+        - username
+        - password
+      type: object
+      properties:
+        username:
+          type: string
+          example: some_username
+        password:
+          type: string
+          example: some_password
+    

@@ -1,0 +1,53 @@
+tags:
+  - name: Payments
+    description: Everithin about payments
+
+paths:
+  /api/payment/order:
+    post:
+      tags:
+        - Payments
+      summary: Create a payment orders
+      description: Create a user payment order (auth token required)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                items:
+                  type: array
+                  items:
+                    oneOf:
+                      - $ref: '#/components/schemas/PaymentOrderCreate'
+
+components:
+  schemas:
+    PaymentOrderCreate:
+      type: object
+      required:
+        - id
+        - description
+        - picture_url
+        - quantity
+        - unit_price
+        - title
+      properties:
+        id:
+          type: string
+          example: 5679edgb24589973e2e7s6d2
+        description:
+          type: string
+          example: product_description
+        picture_url:
+          type: string
+          example: http://url.img
+        quantity:
+          type: integer
+          example: 5
+        unit_price:
+          type: number
+          example: 726.55
+        title:
+          type: string
+          example: product_name

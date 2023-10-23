@@ -1,0 +1,22 @@
+components:
+  schemas:
+    BadRequest:
+      type: object
+      properties:
+        errors:
+          type: Array
+          example: [
+            {
+              type: field,
+              value: field_value,
+              msg: field error message,
+              path: field,
+              location: body
+            }
+          ]
+    NotFound:
+      type: object
+      properties:
+        message:
+          type: string
+          example: resource not found

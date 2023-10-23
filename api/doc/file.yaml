@@ -1,0 +1,22 @@
+tags:
+  - name: Files
+    description: Everithing about files
+
+paths:
+  /api/media/products/{name}:
+    get:
+      tags:
+        - Files
+      summary: Get file
+      produces:
+        - image/png
+        - image/jpeg
+      parameters:
+        - in: path
+          name: fileName
+          required: true
+      responses:
+        200:
+          description: Successful operation
+          schema:
+            type: file
