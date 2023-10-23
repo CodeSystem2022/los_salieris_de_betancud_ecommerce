@@ -1,0 +1,185 @@
+tags:
+  - name: Products
+    description: Everything about products
+paths:
+  /api/products:
+    post:
+      tags:
+        - Products
+      summary: Create a product
+      description: Create a product, only for admins users (auth token required)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+      responses:
+        201:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+    get:
+      tags:
+        - Products
+      summary: List products
+      parameters:
+        - in: query
+          name: category
+          type: string
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                    - $ref: '#/components/schemas/Product'
+  /api/products/{id}:
+    get:
+      tags:
+          - Products
+      summary: Get product details
+      parameters:
+        - in: path
+          name: id
+          type: string
+          example: 652451bd2c43d99b1dae0f5e
+          required: true
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Product not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+    put:
+      tags:
+        - Products
+      summary: Update a product
+      description: Update a product, only for admins users (auth token required)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+    delete:
+      tags:
+        - Products
+      summary: Delete a product
+      description: Delete a product, only for admins users (auth token required)
+      parameters:
+        - in: path
+          name: id
+          type: string
+          example: 652451bd2c23d99b1dae3f5e
+          required: true
+      responses:
+        204:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Product has been deleted...
+        400:
+          description: Product not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+
+components:
+  schemas:
+    ProductCreate:
+      type: object
+      required:
+        - title
+        - desc
+        - price
+        - stock
+      properties:
+        title:
+          type: string
+          example: some_title
+        desc:
+          type: string
+          example: some_description
+        img:
+          type: file
+        categories:
+          type: array
+          example: [
+            category_1,
+            category_2
+          ]
+        price:
+          type: number
+          example: 155.50
+        stock:
+          type: integer
+          example: 5
+    Product:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: 5679edgb24589973e2e7s6d2
+        title:
+          type: string
+          example: some_title
+        desc:
+          type: string
+          example: some_description
+        img:
+          type: string
+          example: http://url.img
+        categories:
+          type: array
+          example: [
+            category_1,
+            category_2
+          ]
+        price:
+          type: number
+          example: 155.50
+        stock:
+          type: integer
+          example: 5
+        createdAt:
+          type: datetime
+          example: 2023-10-14T01:21:31.537Z
+        updatedAt:
+          type: datetime
+          example: 2023-10-14T01:21:31.537Z

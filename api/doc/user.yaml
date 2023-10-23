@@ -1,0 +1,159 @@
+tags:
+  - name: Users
+    description: Everithin about users
+
+paths:
+  /api/users:
+    post:
+      tags:
+        - Users
+      summary: Create a user
+      description: Create a new user, only for admins users (auth token required)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+
+    get:
+      tags:
+        - Users
+      summary: List users
+      description: List all users, only for admins users (auth token required)
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                    - $ref: '#/components/schemas/User'
+  /api/users/{id}:
+    get:
+      tags:
+          - Users
+      summary: Get user details
+      description: Get details of a user, if user is admin get any user, else get current user or NotFound (auth token required)
+      parameters:
+        - in: path
+          name: id
+          type: string
+          example: 652451bd2c43d99b1dae0f5e
+          required: true
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+    put:
+      tags:
+        - Users
+      summary: Update a user
+      description: Update details of a user, if user is admin update any user, else update current user or NotFound (auth token required)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+    delete:
+      tags:
+        - Users
+      summary: Delete a user
+      description: Delete a user, only for admins users (auth token required)
+      parameters:
+        - in: path
+          name: id
+          type: string
+          example: 652451bd2c23d99b1dae3f5e
+          required: true
+      responses:
+        204:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User has been deleted...
+        400:
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: 5679edgb24589973e2e7s6d2
+        username:
+          type: string
+          example: some_username
+        email:
+          type: string
+          example: some@email.com
+        isAdmin:
+          type: boolean
+          example: false
+        createdAt:
+          type: datetime
+          example: 2023-10-14T01:21:31.537Z
+        updatedAt:
+          type: datetime
+          example: 2023-10-14T01:21:31.537Z
+    UserUpdate:
+      type: object
+      properties:
+        username:
+          type: string
+          example: some_username
+        email:
+          type: string
+          example: some@email.com
+        isAdmin:
+          type: boolean
+          example: false
+    UserCreate:
+      type: object
+      properties:
+        username:
+          type: string
+          example: some_username
+        email:
+          type: string
+          example: some@email.com
+        isAdmin:
+          type: boolean
+          example: false
+        password:
+          type: string
+          example: some_password
