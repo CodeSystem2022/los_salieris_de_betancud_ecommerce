@@ -9,6 +9,10 @@ paths:
         - Orders
       summary: List orders
       description: List all payment orders, only for admins users (auth token required)
+      parameters:
+        - in: query
+          name: toDay
+          type: boolean
       responses:
         200:
           description: Successful operation
@@ -21,6 +25,24 @@ paths:
                     - $ref: '#/components/schemas/Order'
 
   /api/orders/{id}:
+    get:
+      tags:
+        - Orders
+      summary: Get order details
+      description: Get an payment order details, only for admins users (auth token required)
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
     delete:
       tags:
         - Orders
