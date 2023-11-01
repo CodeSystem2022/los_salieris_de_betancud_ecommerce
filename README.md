@@ -31,4 +31,4 @@ La estructura del repositorio es la siguiente:
 En cada README.md encotrarás requerimientos y las instrucciones necesarias para poner en marcha el sitio.
 Recuerda clonar el repositorio antes:
 
-`git clone https://github.com/CodeSystem2022/los_salieris_de_betancud_ecommerce.git`
+    `git clone https://github.com/CodeSystem2022/los_salieris_de_betancud_ecommerce.git`
