@@ -9,7 +9,7 @@ import {
 
 export const createProduct = async (req, res) => {
   try {
-    const img = req.files?.img;
+    const img = Object.keys(req.files || {}).includes('img[]') ? req.files['img[]'] : null
     if (img) {
       const path = './media/products/' + img.name;
       img.mv(path, (err) => {
@@ -28,7 +28,7 @@ export const createProduct = async (req, res) => {
 
 export const updateProduct = async (req, res) => {
   try {
-    const img = req.files?.img;
+    const img = Object.keys(req.files || {}).includes('img[]') ? req.files['img[]'] : null
     if (img) {
       const path = './media/products/' + img.name;
       img.mv(path, (err) => {
@@ -41,6 +41,7 @@ export const updateProduct = async (req, res) => {
     const updatedProduct = await updateProductDB(req.params.id, { $set: req.body });
     return res.status(200).json(updatedProduct);
   } catch (err) {
+    console.log(err);
     return res.status(500).json(err);
   }
 };
