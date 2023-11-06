@@ -43,7 +43,7 @@ export const ProductsLayout = () => {
               <ul className='grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4'>
                 {
                   products.map(product => {
-                    return <ProductCard product={product} key={product._id} />
+                    return (product.stock <= 0) ? null : <ProductCard product={product} key={product._id} />
                   })
                 }
               </ul>

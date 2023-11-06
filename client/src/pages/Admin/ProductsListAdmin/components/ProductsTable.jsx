@@ -33,7 +33,7 @@ export const ProductsTable = ({ productsList }) => {
                       {product.desc.length > 22 ? product.desc.slice(0, 25) + '...' : product.desc}
                     </td>
                     <td className='text-center py-2 px-4 border-b border-grey-light'>${product.price}</td>
-                    <td className='text-center py-2 px-4 border-b border-grey-light'>{product.stock}</td>
+                    <td className={`text-center font-bold py-2 px-4 border-b border-grey-light ${product.stock < 10 ? 'text-red-500' : 'text-green-500'}`}>{product.stock}</td>
                   </tr>
                 )
               })}
