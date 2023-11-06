@@ -20,9 +20,9 @@ export const createProduct = async (req, res) => {
       req.body.img = path.replace('./', '/');
     }
     const products = await createProductDB(req.body);
-    res.status(200).json(products);
+    return res.status(200).json(products);
   } catch (err) {
-    res.status(400).json(err);
+    return res.status(400).json(err);
   }
 };
 
@@ -39,18 +39,18 @@ export const updateProduct = async (req, res) => {
       req.body.img = path.replace('./', '/');
     }
     const updatedProduct = await updateProductDB(req.params.id, { $set: req.body });
-    res.status(200).json(updatedProduct);
+    return res.status(200).json(updatedProduct);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 };
 
 export const deleteProduct = async (req, res) => {
   try {
     await deleteProductDB(req.params.id);
-    res.status(200).json('Product has been deleted...');
+    return res.status(200).json('Product has been deleted...');
   } catch (err) {
-    res.status(404).json({ message: 'Product not found' });
+    return res.status(404).json({ message: 'Product not found' });
   }
 };
 
@@ -77,8 +77,8 @@ export const getAllProducts = async (req, res) => {
       products = await getAllProductsDB();
     }
 
-    res.status(200).json(products);
+    return res.status(200).json(products);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 };

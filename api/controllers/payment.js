@@ -26,7 +26,7 @@ export const createOrder = async (req, res) => {
         }
       },
     });
-    res.json(result);
+    return res.json(result);
   } catch (error) {
     return res.status(500).json({ message: 'Algo salió mal.!' });
   }

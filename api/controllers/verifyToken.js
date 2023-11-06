@@ -9,7 +9,7 @@ export const verifyToken = (req, res, next) => {
   if (authHeader) {
     const token = authHeader.split(" ")[1];
     verify(token, JWT_SEC, (err, user) => {
-      if (err) res.status(403).json("Token is not valid!");
+      if (err) return res.status(403).json("Token is not valid!");
       req.user = user;
       next();
     });
@@ -23,7 +23,7 @@ export const verifyTokenAndAuthorization = (req, res, next) => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
       next();
     } else {
-      res.status(403).json("You are not alowed to do that!");
+      return res.status(403).json("You are not alowed to do that!");
     }
   });
 };
@@ -33,7 +33,7 @@ export const verifyTokenAndAdmin = (req, res, next) => {
     if (req.user.isAdmin) {
       next();
     } else {
-      res.status(403).json("You are not alowed to do that!");
+      return res.status(403).json("You are not alowed to do that!");
     }
   });
 };
