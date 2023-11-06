@@ -35,7 +35,7 @@ export const ProductsUpdateAdmin = () => {
   return (
     <div className='container max-w-full mx-auto md:py-24 px-6'>
       <div className='p-4 text-center font-semibold text-xl text-black'>
-        Crear producto
+        Actualizar producto
       </div>
       <div className='max-w-sm mx-auto px-6'>
         <div className='relative flex flex-wrap'>
@@ -98,6 +98,7 @@ export const ProductsUpdateAdmin = () => {
                   </p>
                   <input
                     {...register('img', { required: false })}
+                    name='img'
                     type='file'
                     className='border placeholder-gray-400 focus:outline-none
                     focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white

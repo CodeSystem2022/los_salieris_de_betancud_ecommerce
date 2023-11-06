@@ -19,7 +19,7 @@ export const ProductDetail = () => {
         <img
           src={`${BACKEND_URL}${product.img}`}
           alt=''
-          className='w-full object-cover transition duration-500 hover:scale-105 sm:h-72'
+          className='w-full object-contain transition duration-500 hover:scale-105 sm:h-72'
         />
         <div className='relative border border-gray-100 bg-white p-6'>
           <h3 className='mt-4 text-lg font-medium text-gray-900'>{product.title}</h3>
