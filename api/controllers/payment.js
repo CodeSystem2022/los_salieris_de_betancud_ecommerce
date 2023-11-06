@@ -22,7 +22,7 @@ export const createOrder = async (req, res) => {
         },
         back_urls: {
           success: SUCCESS_PAID_URL,
-          failure: FAILURE_PAID_URL,
+          failure: SUCCESS_PAID_URL,
         }
       },
     });
