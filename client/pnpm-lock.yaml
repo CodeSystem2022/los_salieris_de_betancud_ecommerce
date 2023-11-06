@@ -6,7 +6,7 @@ settings:
 
 dependencies:
   axios:
-    specifier: ^1.5.1
+    specifier: 1.5.1
     version: 1.5.1
   react:
     specifier: 18.2.0
@@ -15,7 +15,7 @@ dependencies:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
   react-hook-form:
-    specifier: ^7.47.0
+    specifier: 7.47.0
     version: 7.47.0(react@18.2.0)
   react-hot-toast:
     specifier: 2.4.1
@@ -38,7 +38,7 @@ devDependencies:
     specifier: 3.3.2
     version: 3.3.2(vite@4.4.5)
   autoprefixer:
-    specifier: ^10.4.16
+    specifier: 10.4.16
     version: 10.4.16(postcss@8.4.31)
   eslint:
     specifier: 8.45.0
@@ -53,13 +53,13 @@ devDependencies:
     specifier: 0.4.3
     version: 0.4.3(eslint@8.45.0)
   postcss:
-    specifier: ^8.4.31
+    specifier: 8.4.31
     version: 8.4.31
   standard:
     specifier: 17.1.0
     version: 17.1.0
   tailwindcss:
-    specifier: ^3.3.3
+    specifier: 3.3.3
     version: 3.3.3
   vite:
     specifier: 4.4.5
